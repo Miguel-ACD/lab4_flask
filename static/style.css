@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    color: #222;
+}
+
+header {
+    background: #2f3b52;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+header a {
+    color: white;
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.caja {
+    background: white;
+    padding: 25px;
+    border: 1px solid #ddd;
+    max-width: 420px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+}
+
+button,
+.boton {
+    background: #2f3b52;
+    color: white;
+    padding: 9px 14px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #e8e8e8;
+}
+
+.fila-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mensaje {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+.mensaje.ok {
+    border-color: #6aa36a;
+}
+
+.mensaje.error {
+    border-color: #c26666;
+}
+
+.form-inline {
+    display: inline;
+}
+
+.link {
+    background: none;
+    color: #b00020;
+    padding: 0;
+    margin: 0 0 0 10px;
+    text-decoration: underline;
+}

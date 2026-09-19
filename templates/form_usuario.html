@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="caja">
+    {% if usuario %}
+        <h2>Editar usuario</h2>
+    {% else %}
+        <h2>Nuevo usuario</h2>
+    {% endif %}
+
+    <form method="post">
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="{{ usuario.nombre if usuario else '' }}" required>
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ usuario.email if usuario else '' }}" required>
+
+        <label>Rol</label>
+        <select name="rol">
+            <option value="usuario" {% if usuario and usuario.rol == 'usuario' %}selected{% endif %}>usuario</option>
+            <option value="admin" {% if usuario and usuario.rol == 'admin' %}selected{% endif %}>admin</option>
+        </select>
+
+        <button type="submit">Guardar</button>
+        <a href="{{ url_for('dashboard') }}">Cancelar</a>
+    </form>
+</section>
+{% endblock %}

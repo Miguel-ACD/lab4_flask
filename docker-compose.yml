@@ -1,0 +1,43 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?Configura SECRET_KEY en el archivo .env}
+      DATABASE_URL: mysql+pymysql://flaskuser:flaskpass@db:3306/lab3_flask
+      ADMIN_USER: ${ADMIN_USER:?Configura ADMIN_USER en el archivo .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Configura ADMIN_PASSWORD en el archivo .env}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?Configura ADMIN_EMAIL en el archivo .env}
+      MAIL_SERVER: ${MAIL_SERVER:-mailhog}
+      MAIL_PORT: ${MAIL_PORT:-1025}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_DEFAULT_SENDER: ${MAIL_DEFAULT_SENDER:-laboratorio@demo.com}
+      MAIL_USE_TLS: ${MAIL_USE_TLS:-false}
+      MAIL_USE_SSL: ${MAIL_USE_SSL:-false}
+    depends_on:
+      - db
+      - mailhog
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: lab3_flask
+      MYSQL_USER: flaskuser
+      MYSQL_PASSWORD: flaskpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+volumes:
+  mysql_data:

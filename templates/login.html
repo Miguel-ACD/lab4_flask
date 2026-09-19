@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="caja">
+    <h2>Iniciar sesion</h2>
+    <form method="post">
+        <label>Usuario</label>
+        <input type="text" name="usuario" required>
+
+        <label>Contrasena</label>
+        <input type="password" name="password" required>
+
+        <label>Correo para recibir el codigo</label>
+        <input type="email" name="correo" required>
+
+        <button type="submit">Ingresar</button>
+    </form>
+</section>
+{% endblock %}

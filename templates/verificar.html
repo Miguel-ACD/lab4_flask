@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section class="caja">
+    <h2>Verificar codigo</h2>
+    <p>Escribe el codigo que fue enviado al correo registrado.</p>
+    <form method="post">
+        <label>Codigo</label>
+        <input type="text" name="codigo" maxlength="6" required>
+        <button type="submit">Validar</button>
+    </form>
+</section>
+{% endblock %}
