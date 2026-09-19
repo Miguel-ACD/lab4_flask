@@ -243,20 +243,13 @@ if __name__ == "__main__":
                 print("Esperando conexion con la base de datos...")
                 time.sleep(2)
 
-        admin_user = os.getenv("ADMIN_USER", "admin")
-        admin_password = os.getenv("ADMIN_PASSWORD")
-        admin_email = os.getenv("ADMIN_EMAIL", "admin@demo.com")
-
-        if not admin_password:
-            raise RuntimeError("Debes configurar ADMIN_PASSWORD en el archivo .env")
-
-        if not Admin.query.filter_by(usuario=admin_user).first():
+        if not Admin.query.filter_by(usuario="admin").first():
             admin = Admin(
-                usuario=admin_user,
-                email=admin_email,
-                password_hash=generate_password_hash(admin_password),
+                usuario="admin",
+                email=os.getenv("ADMIN_EMAIL", "admin@demo.com"),
+                password_hash=generate_password_hash("admin123"),
             )
             db.session.add(admin)
             db.session.commit()
-            print(f"Admin creado: usuario {admin_user}")
+            print("Admin creado: usuario admin / contrasena admin123")
     app.run(host="0.0.0.0", port=5000, debug=True)
